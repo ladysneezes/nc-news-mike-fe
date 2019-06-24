@@ -7,3 +7,12 @@ export const getArticles = () => {
       return res.data;
     });
 };
+
+export const getArticleById = article_id => {
+  return axios
+    .get(`https://mikes-nc-news.herokuapp.com/api/articles/${article_id}`)
+    .then(res => {
+      console.log(res.data);
+      return res.data;
+    });
+};
