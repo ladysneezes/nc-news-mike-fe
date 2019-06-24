@@ -17,8 +17,8 @@ class ArticlesList extends Component {
   }
 
   componentDidMount = () => {
-    this.api.getArticles().then(articles => {
-      this.setState({ articles });
+    api.getArticles().then(res => {
+      this.setState({ articles: res.articles });
     });
   };
 }

@@ -4,7 +4,6 @@ export const getArticles = () => {
   return axios
     .get("https://mikes-nc-news.herokuapp.com/api/articles/")
     .then(res => {
-      console.log(res);
-      return res;
+      return res.data;
     });
 };
