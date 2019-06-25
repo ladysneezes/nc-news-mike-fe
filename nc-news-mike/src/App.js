@@ -6,7 +6,7 @@ import ArticleList from "./Components/ArticlesList";
 import ArticleInfo from "./Components/ArticleInfo";
 
 class App extends React.Component {
-  state = {};
+  state = { user: "grumpy19" };
 
   render() {
     return (
@@ -14,7 +14,7 @@ class App extends React.Component {
         <Header />
         <Router>
           <ArticleList path="/articles" />
-          <ArticleInfo path="/articles/:article_id" />
+          <ArticleInfo path="/articles/:article_id/*" />
         </Router>
       </div>
     );

@@ -1,14 +1,14 @@
 import React from "react";
-import HomeButton from "./HomeButton";
-import ArticlesButton from "./ArticlesButton";
+import { Link } from "@reach/router";
 
 const Header = () => {
   return (
     <header>
-      <h1>Mike's NC News Outlet</h1>
-      <nav>
-        <HomeButton />
-        <ArticlesButton />
+      <h1>Mike's News Outlet</h1>
+      <nav className="navButtons">
+        <Link to="/">Home</Link>
+        <Link to="/articles">Articles</Link>
+        <Link to="/topics">Topics</Link>
       </nav>
     </header>
   );

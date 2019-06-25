@@ -3,13 +3,17 @@ import { Link } from "@reach/router";
 
 const ArticleCard = ({ article }) => {
   return (
-    <Link to={`articles/${article.article_id}`}>
-      <li key={article.article_id}>
-        Title: {article.title} <br />
-        Author: {article.author} <br />
-        Topic: {article.topic} <br />
-      </li>
-    </Link>
+    <section key={article.article_id}>
+      <h4>
+        Title:
+        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+      </h4>
+      <br />
+      Author: {article.author} Topic: {article.topic} <br />
+      Comment Count: {article.comment_count} Votes: {article.votes}
+      <button value={1}>1up!</button>
+      <br />
+    </section>
   );
 };
 
