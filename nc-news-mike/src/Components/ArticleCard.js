@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import Voter from "./Voter";
 
 const ArticleCard = ({ article }) => {
   return (
@@ -10,8 +11,8 @@ const ArticleCard = ({ article }) => {
       </h4>
       <br />
       Author: {article.author} Topic: {article.topic} <br />
-      Comment Count: {article.comment_count} Votes: {article.votes}
-      <button value={1}>1up!</button>
+      Comment Count: {article.comment_count}
+      <br /> <Voter article_id={article.article_id} votes={article.votes} />
       <br />
     </section>
   );

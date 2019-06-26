@@ -34,3 +34,13 @@ export const getArticleComments = article_id => {
       return res.data.comments;
     });
 };
+
+export const patchArticleVotes = (article_id, increment) => {
+  return axios
+    .patch(`https://mikes-nc-news.herokuapp.com/api/articles/${article_id}`, {
+      inc_votes: increment
+    })
+    .then(({ data }) => {
+      return data.article;
+    });
+};
