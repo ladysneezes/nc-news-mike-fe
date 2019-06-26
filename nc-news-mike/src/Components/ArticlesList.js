@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
 import * as api from "../api";
+import Error from "./Error";
 
 class ArticlesList extends Component {
   state = {
-    articles: []
+    articles: [],
+    error: null
   };
   render() {
+    const { articles, error } = this.state;
+    if (error) {
+      return <Error error={error} />;
+    }
     return (
       <ul>
-        {this.state.articles.map(article => (
+        {articles.map(article => (
           <ArticleCard article={article} />
         ))}
       </ul>
@@ -17,9 +23,23 @@ class ArticlesList extends Component {
   }
 
   componentDidMount = () => {
-    api.getArticles().then(res => {
-      this.setState({ articles: res.articles });
-    });
+    this.fetchArticles(this.props);
+  };
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.slug !== this.props.slug) {
+      return this.fetchArticles(this.props);
+    }
+  };
+
+  fetchArticles = ({ slug }) => {
+    return api
+      .getArticles(slug)
+      .then(res => {
+        this.setState({ articles: res.articles });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
   };
 }
 

@@ -9,13 +9,12 @@ class TopicsList extends Component {
     const { topics } = this.state;
     return (
       <section>
-        <ul>
-          {topics.map(topic => (
-            <Link to={`/topics/${topic.slug}`}>
-              <button>{`${topic.slug}`}</button>
-            </Link>
-          ))}
-        </ul>
+        {topics.map(topic => (
+          <Link to={`/topics/${topic.slug}`}>
+            <button>{`${topic.slug}`}</button>
+          </Link>
+        ))}
+
         <Router>
           <ArticlesList path=":slug" topic={`${this.props.slug}`} />
         </Router>
