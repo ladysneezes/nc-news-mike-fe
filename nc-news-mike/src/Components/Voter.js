@@ -31,16 +31,24 @@ class Voter extends Component {
     );
   }
   handleVote = increment => {
-    const { article_id } = this.props;
-    api.patchArticleVotes(article_id, increment).catch(error => {
-      console.log("error :", error);
-      this.setState(({ voteChange }) => ({
-        voteChange: voteChange - increment
-      }));
-    });
+    const { article_id, comment_id } = this.props;
     this.setState(({ voteChange }) => ({
       voteChange: voteChange + increment
     }));
+
+    if (article_id) {
+      api.patchArticleVotes(article_id, increment).catch(error => {
+        this.setState(({ voteChange }) => ({
+          voteChange: voteChange - increment
+        }));
+      });
+    } else if (comment_id) {
+      api.patchCommentVotes(comment_id, increment).catch(error => {
+        this.setState(({ voteChange }) => ({
+          voteChange: voteChange - increment
+        }));
+      });
+    }
   };
 }
 
