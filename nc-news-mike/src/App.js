@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import { Router } from "@reach/router";
 import ArticleList from "./Components/ArticlesList";
 import ArticleInfo from "./Components/ArticleInfo";
+import TopicsList from "./Components/TopicsList";
 
 class App extends React.Component {
   state = { user: "grumpy19" };
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Router>
           <ArticleList path="/articles" />
           <ArticleInfo path="/articles/:article_id/*" />
+          <TopicsList path="/topics/*" />
         </Router>
       </div>
     );

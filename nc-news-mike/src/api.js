@@ -1,8 +1,17 @@
 import axios from "axios";
 
-export const getArticles = () => {
+export const getArticles = topic => {
   return axios
-    .get("https://mikes-nc-news.herokuapp.com/api/articles/")
+    .get("https://mikes-nc-news.herokuapp.com/api/articles/", {
+      params: { topic: topic }
+    })
+    .then(res => {
+      return res.data;
+    });
+};
+export const getTopics = () => {
+  return axios
+    .get("https://mikes-nc-news.herokuapp.com/api/topics/")
     .then(res => {
       return res.data;
     });
