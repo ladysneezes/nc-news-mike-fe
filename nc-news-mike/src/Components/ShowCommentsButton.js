@@ -6,7 +6,7 @@ const ShowCommentsButton = props => {
   return (
     <Link to={`/articles/${article_id}/comments`}>
       <button>
-        Show comments
+        Show/Add comments
         <span role="img" aria-label="show">
           ⬇️
         </span>

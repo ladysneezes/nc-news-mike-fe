@@ -30,7 +30,7 @@ class ArticlesList extends Component {
         </select>
         <ul>
           {articles.map(article => (
-            <ArticleCard article={article} />
+            <ArticleCard key={article.article_id} article={article} />
           ))}
         </ul>
       </section>

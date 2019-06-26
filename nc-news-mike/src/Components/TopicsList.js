@@ -10,7 +10,7 @@ class TopicsList extends Component {
     return (
       <section>
         {topics.map(topic => (
-          <Link to={`/topics/${topic.slug}`}>
+          <Link to={`/topics/${topic.slug}`} key={topic.slug}>
             <button>{`${topic.slug}`}</button>
           </Link>
         ))}

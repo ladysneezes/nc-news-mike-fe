@@ -10,12 +10,13 @@ class App extends React.Component {
   state = { user: "grumpy19" };
 
   render() {
+    const { user } = this.state;
     return (
       <div className="App">
         <Header />
         <Router>
           <ArticleList path="/articles" />
-          <ArticleInfo path="/articles/:article_id/*" />
+          <ArticleInfo user={user} path="/articles/:article_id/*" />
           <TopicsList path="/topics/*" />
         </Router>
       </div>

@@ -9,18 +9,22 @@ class ArticleInfo extends Component {
   state = { article: {} };
 
   render() {
+    const { article_id } = this.state.article;
+    const { user } = this.props;
     return (
       <section>
         <ArticleCard article={this.state.article} />
         <br />
         {this.state.article.body}
         <br />
+
         <Router>
-          <ShowCommentsButton
-            path="/"
-            article_id={this.state.article.article_id}
+          <ShowCommentsButton path="/" article_id={article_id} />
+          <ArticleComments
+            article_id={article_id}
+            user={user}
+            path="comments"
           />
-          <ArticleComments path="comments" />
         </Router>
       </section>
     );

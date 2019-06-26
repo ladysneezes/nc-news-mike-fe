@@ -44,3 +44,13 @@ export const patchArticleVotes = (article_id, increment) => {
       return data.article;
     });
 };
+export const postComment = (article_id, username, body) => {
+  return axios
+    .post(
+      `https://mikes-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
+      { username: username, body: body }
+    )
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
