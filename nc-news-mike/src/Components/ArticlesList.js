@@ -7,19 +7,26 @@ class ArticlesList extends Component {
   state = {
     articles: [],
     error: null,
-    sort_by: null
+    sort_by: null,
+    order: null
   };
+
   render() {
     const { articles, error } = this.state;
     if (error) {
       return <Error error={error} />;
     }
+
     return (
       <section>
         <select name="sort_by dropdown" onChange={this.handleSortChange}>
           <option value="created_at">Date Created</option>
           <option value="comment_count">Comment Count</option>
           <option value="votes">Votes</option>
+        </select>
+        <select name="order dropdown" onChange={this.handleOrderChange}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
         </select>
         <ul>
           {articles.map(article => (
@@ -30,14 +37,8 @@ class ArticlesList extends Component {
     );
   }
 
-  handleSortChange = event => {
-    const sort_by = event.target.value;
-    console.log(sort_by);
-    this.setState({ sort_by });
-  };
-
   componentDidMount = () => {
-    this.fetchArticles(this.props);
+    this.fetchArticles({ ...this.props, ...this.state });
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -47,11 +48,24 @@ class ArticlesList extends Component {
     if (prevState.sort_by !== this.state.sort_by) {
       return this.fetchArticles({ ...this.props, ...this.state });
     }
+    if (prevState.order !== this.state.order) {
+      return this.fetchArticles({ ...this.props, ...this.state });
+    }
   };
 
-  fetchArticles = ({ slug, sort_by }) => {
+  handleSortChange = event => {
+    const sort_by = event.target.value;
+    this.setState({ sort_by });
+  };
+
+  handleOrderChange = event => {
+    const order = event.target.value;
+    this.setState({ order });
+  };
+
+  fetchArticles = ({ slug, sort_by, order }) => {
     return api
-      .getArticles(slug, sort_by)
+      .getArticles(slug, sort_by, order)
       .then(res => {
         this.setState({ articles: res.articles });
       })

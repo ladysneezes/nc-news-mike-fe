@@ -2,7 +2,7 @@ import React from "react";
 
 const Error = props => {
   const { error } = props;
-  if (error) return <p>{error.response.data.msg}</p>;
+  if (error) return <p>{error}</p>;
   else return <p>ERRRRORRRRR</p>;
 };
 
