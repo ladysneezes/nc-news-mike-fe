@@ -8,7 +8,13 @@ class Voter extends Component {
     const { voteChange } = this.state;
     return (
       <>
-        <p>Votes:{votes + voteChange}</p>
+        <p
+          className="blue-grey-text text-darken-
+        
+        "
+        >
+          Votes:{votes + voteChange}
+        </p>
         <button
           id="upvote"
           disabled={voteChange > 0}

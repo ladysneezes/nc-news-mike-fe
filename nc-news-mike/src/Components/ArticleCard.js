@@ -7,8 +7,8 @@ const ArticleCard = ({ article }) => {
     <section key={article.article_id}>
       <div className="row">
         <div className="col s12 m12">
-          <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
+          <div className="card blue lighten-5">
+            <div className="card-content blue-grey-text text-darken-4">
               <span className="card-title">
                 <h6>
                   <Link to={`/articles/${article.article_id}`}>

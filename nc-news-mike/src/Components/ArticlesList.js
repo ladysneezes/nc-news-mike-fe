@@ -43,13 +43,10 @@ class ArticlesList extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevProps.slug !== this.props.slug) {
-      return this.fetchArticles({ ...this.props, ...this.state });
-    }
-    if (prevState.sort_by !== this.state.sort_by) {
-      return this.fetchArticles({ ...this.props, ...this.state });
-    }
-    if (prevState.order !== this.state.order) {
+    const slugChange = prevProps.slug !== this.props.slug;
+    const sortByChange = prevState.sort_by !== this.state.sort_by;
+    const orderChange = prevState.order !== this.state.order;
+    if (slugChange || sortByChange || orderChange) {
       return this.fetchArticles({ ...this.props, ...this.state });
     }
   };
