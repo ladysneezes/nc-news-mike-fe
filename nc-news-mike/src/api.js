@@ -65,3 +65,26 @@ export const postComment = (article_id, username, body) => {
       return data.comment;
     });
 };
+
+export const postArticle = (username, title, body) => {
+  return axios
+    .post(`https://mikes-nc-news.herokuapp.com/api/articles/`, {
+      author: username,
+      body: body,
+      tite: title
+    })
+    .then(({ data }) => {
+      return data.article;
+    })
+    .catch(error => {
+      console.dir(error); //still needs handling
+    });
+};
+
+export const deleteComment = comment_id => {
+  return axios
+    .delete(`https://mikes-nc-news.herokuapp.com/api/comments/${+comment_id}`)
+    .then(data => {
+      console.log("data :", data);
+    });
+};

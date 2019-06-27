@@ -26,7 +26,12 @@ class ArticleComments extends Component {
         />
         <ul>
           {this.state.comments.map(comment => (
-            <CommentCard comment={comment} key={comment.comment_id} />
+            <CommentCard
+              comment={comment}
+              user={user}
+              key={comment.comment_id}
+              removeAComment={this.removeAComment}
+            />
           ))}
         </ul>
       </section>
@@ -40,6 +45,17 @@ class ArticleComments extends Component {
 
   addAComment = comment => {
     this.setState({ comments: [comment, ...this.state.comments] });
+  };
+
+  removeAComment = commentToRemoveId => {
+    this.setState({
+      comments: this.state.comments.filter(
+        comment => comment.comment_id !== commentToRemoveId
+      )
+    });
+    api.deleteComment(commentToRemoveId).then(() => {
+      console.log("hi");
+    });
   };
 }
 
