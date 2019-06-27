@@ -8,6 +8,7 @@ const DeleteButton = props => {
   return (
     <>
       <button
+        className="waves-effect waves-light btn"
         disabled={user !== author}
         onClick={() => {
           handleDelete(comment_id);

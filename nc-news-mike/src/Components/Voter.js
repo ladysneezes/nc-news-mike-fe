@@ -8,6 +8,7 @@ class Voter extends Component {
     const { voteChange } = this.state;
     return (
       <>
+        <p>Votes:{votes + voteChange}</p>
         <button
           id="upvote"
           disabled={voteChange > 0}
@@ -17,7 +18,6 @@ class Voter extends Component {
             👍
           </span>
         </button>
-        <p>Votes:{votes + voteChange}</p>
         <button
           id="downvote"
           disabled={voteChange < 0}

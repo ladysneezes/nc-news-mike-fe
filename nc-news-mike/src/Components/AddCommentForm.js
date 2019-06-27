@@ -6,11 +6,17 @@ class AddCommentForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleCommentFormSubmit}>
-        <input
-          placeholder="What do you think?"
-          value={this.state.userInput}
-          onChange={this.handleInputChange}
-        />
+        <div className="container">
+          <div className="row">
+            <div className="col s10 offset-s1">
+              <input
+                placeholder="What do you think?"
+                value={this.state.userInput}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+        </div>
         <button type="submit">Submit.</button>
       </form>
     );
@@ -20,9 +26,10 @@ class AddCommentForm extends Component {
     event.preventDefault();
     const { user, article_id, addAComment } = this.props;
     const body = this.state.userInput;
-    this.setState({ userInput: "" });
+
     api.postComment(article_id, user, body).then(comment => {
       addAComment(comment);
+      this.setState({ userInput: "" });
     });
   };
 

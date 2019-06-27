@@ -15,7 +15,9 @@ class ArticleInfo extends Component {
       <section>
         <ArticleCard article={this.state.article} />
         <br />
-        {this.state.article.body}
+
+        <p className="flow-text">{this.state.article.body}</p>
+
         <br />
 
         <Router>

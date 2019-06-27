@@ -84,7 +84,7 @@ export const postArticle = (username, title, body) => {
 export const deleteComment = comment_id => {
   return axios
     .delete(`https://mikes-nc-news.herokuapp.com/api/comments/${+comment_id}`)
-    .then(data => {
-      console.log("data :", data);
+    .catch(error => {
+      return error;
     });
 };

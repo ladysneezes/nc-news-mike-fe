@@ -18,7 +18,7 @@ class ArticlesList extends Component {
     }
 
     return (
-      <section>
+      <>
         <select name="sort_by dropdown" onChange={this.handleSortChange}>
           <option value="created_at">Date Created</option>
           <option value="comment_count">Comment Count</option>
@@ -33,7 +33,8 @@ class ArticlesList extends Component {
             <ArticleCard key={article.article_id} article={article} />
           ))}
         </ul>
-      </section>
+        <br />
+      </>
     );
   }
 
